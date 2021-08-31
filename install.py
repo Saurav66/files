@@ -82,7 +82,7 @@ def install_bench(args):
 	if not args.production:
 		dist_name, dist_version = get_distribution_info()
 		if dist_name=='centos':
-			args.python = 'python3.6'
+			args.python = 'python3.7'
 		else:
 			args.python = 'python3'
 
@@ -159,11 +159,11 @@ def install_python37():
 
 	print('Installing Python 3.7')
 
-	# install python 2.7
+	# install python 3.7
 	success = run_os_command({
-		'apt-get': 'sudo apt-get install -y python-dev',
+		'apt-get': 'sudo apt-get install -y python3-dev',
 		'yum': 'sudo yum install -y python37',
-		'brew': 'brew install python'
+		'brew': 'brew install python3'
 	})
 
 	if not success:
