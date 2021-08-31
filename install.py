@@ -408,8 +408,8 @@ if __name__ == '__main__':
 	try:
 		import argparse
 	except ImportError:
-		# install python2.7
-		install_python27()
+		install python3.8
+		#install_python37()
 
 	args = parse_commandline_args()
 
