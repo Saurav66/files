@@ -14,7 +14,7 @@ def install_bench(args):
 	success = run_os_command({
 		'apt-get': [
 			'sudo apt-get update',
-			'sudo apt-get install -y git build-essential python-setuptools python-dev libffi-dev libssl-dev'
+			'sudo apt-get install -y git build-essential python3-setuptools python3-dev libffi-dev libssl-dev'
 		],
 		'yum': [
 			'sudo yum groupinstall -y "Development tools"',
@@ -36,7 +36,7 @@ def install_bench(args):
 	# secure pip installation
 	if find_executable('pip'):
 		run_os_command({
-			'pip': 'sudo pip install --upgrade setuptools urllib3 requests cryptography pip==9.0.3'
+			'pip': 'sudo pip3 install --upgrade setuptools urllib3 requests cryptography pip==9.0.3'
 		})
 
 	else:
@@ -51,11 +51,11 @@ def install_bench(args):
 
 		if success:
 			run_os_command({
-				'pip': 'sudo pip install --upgrade setuptools urllib3 requests cryptography pip==9.0.3'
+				'pip': 'sudo pip3 install --upgrade setuptools urllib3 requests cryptography pip==9.0.3'
 			})
 
 	success = run_os_command({
-		'pip': "sudo pip install --upgrade urllib3 requests cryptography ansible"
+		'pip': "sudo pip3 install --upgrade urllib3 requests cryptography ansible"
 	})
 
 	if not success:
