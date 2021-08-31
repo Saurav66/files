@@ -151,26 +151,26 @@ def get_distribution_info():
 		current_dist = platform.mac_ver()
 		return "macos", current_dist[0].rsplit('.', 1)[0]
 
-def install_python27():
+def install_python37():
 	version = (sys.version_info[0], sys.version_info[1])
 
-	if version == (2, 7):
+	if version == (3, 7):
 		return
 
-	print('Installing Python 2.7')
+	print('Installing Python 3.7')
 
 	# install python 2.7
 	success = run_os_command({
 		'apt-get': 'sudo apt-get install -y python-dev',
-		'yum': 'sudo yum install -y python27',
+		'yum': 'sudo yum install -y python37',
 		'brew': 'brew install python'
 	})
 
 	if not success:
-		could_not_install('Python 2.7')
+		could_not_install('Python 3.7')
 
-	# replace current python with python2.7
-	os.execvp('python2.7', ([] if is_sudo_user() else ['sudo']) + ['python2.7', __file__] + sys.argv[1:])
+	# replace current python with python3.7
+	os.execvp('python3.7', ([] if is_sudo_user() else ['sudo']) + ['python3.7', __file__] + sys.argv[1:])
 
 def install_package(package):
 	package_exec = find_executable(package)
@@ -222,7 +222,7 @@ def clone_bench_repo(args):
 	return success
 
 def run_os_command(command_map):
-	'''command_map is a dictionary of {'executable': command}. For ex. {'apt-get': 'sudo apt-get install -y python2.7'} '''
+	'''command_map is a dictionary of {'executable': command}. For ex. {'apt-get': 'sudo apt-get install -y python3.7'} '''
 	success = True
 	for executable, commands in list(command_map.items()):
 		if find_executable(executable):
@@ -290,7 +290,7 @@ def get_passwords(args):
 
 			pass_set = False
 	else:
-		mysql_root_password = admin_password = 'travis'
+		mysql_root_password = admin_password = 'justdoit@94'
 
 	passwords = {
 		'mysql_root_password': mysql_root_password,
@@ -408,8 +408,8 @@ if __name__ == '__main__':
 	try:
 		import argparse
 	except ImportError:
-		install python3.8
-		#install_python37()
+		#install python3.7
+		install_python37()
 
 	args = parse_commandline_args()
 
