@@ -46,7 +46,7 @@ def install_bench(args):
 			})
 
 		success = run_os_command({
-			'python': 'sudo python get-pip.py --force-reinstall'
+			'python': 'sudo python3 get-pip.py --force-reinstall'
 		})
 
 		if success:
